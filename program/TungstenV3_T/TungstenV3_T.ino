@@ -271,8 +271,6 @@ void loop() { // Main Loop
         int ammoSelectIdx = (digitalRead(PIN_HALL_ONE) * 2) + (digitalRead(PIN_HALL_TWO) * 1); // 0, 1, 2, or 3
         if (ammoSelectIdx != 3 && dartLeft != ammoLimitArr[ammoSelectIdx]) {
           dartLeft = ammoLimitArr[ammoSelectIdx];
-          //isMagDetecting = false;
-          //timerMagDetectStart = 0;
           if (safetyOn) {
             updateSafetyDisplay();
           } else {
