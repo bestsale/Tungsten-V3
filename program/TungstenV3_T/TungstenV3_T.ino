@@ -6,7 +6,7 @@
 * Ammo counter. Combo mode
 *
 * created  18 Jun 2018
-* modified 31 Jul 2018
+* modified 01 Aug 2018
 * by TungstenEXE
 * 
 * For non commercial use
@@ -207,6 +207,10 @@ void setup() { // initilze
   magOut   = (digitalRead(PIN_DARTRESET) == HIGH);
   safetyOn = (digitalRead(PIN_SAFETY) == LOW);
   modeFire = 3 - ((digitalRead(PIN_SELECTOR_TWO) * 2) + (digitalRead(PIN_SELECTOR_ONE) * 1)); // 0, 1 or 2        
+  int ammoSelectIdx = (digitalRead(PIN_HALL_ONE) * 2) + (digitalRead(PIN_HALL_TWO) * 1); // 0, 1, 2, or 3
+  if (ammoSelectIdx != 3 && dartLeft != ammoLimitArr[ammoSelectIdx]) {
+    dartLeft = ammoLimitArr[ammoSelectIdx];
+  }
 
   pusherESC.attach(PIN_PUSHERESC);
   pusherESC.writeMicroseconds(THROTTLE_PUSHER_MIN);
